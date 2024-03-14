@@ -1,0 +1,159 @@
+[
+  {
+    "name": "NAR-03",
+    "details": {
+      "columns": "3",
+      "rows": "2",
+      "flexiZones": "1",
+      "positionLargeZOne": "center",
+      "rowsColumns": [
+        {
+          "isZoneAvailable": "true",
+          "isFlexi": "true",
+          "isCircle": "true",
+          "isRectangle": "false",
+          "circleType": "180"
+        },
+        {
+          "isZoneAvailable": "true",
+          "isFlexi": "false",
+          "isCircle": "true",
+          "isRectangle": "false",
+          "circleType": "240"
+        },
+        {
+          "isZoneAvailable": "true",
+          "isFlexi": "false",
+          "isCircle": "true",
+          "isRectangle": "false",
+          "circleType": "145"
+        },
+        {
+          "isZoneAvailable": "true",
+          "isFlexi": "true",
+          "isCircle": "true",
+          "isRectangle": "false",
+          "circleType": "180"
+        },
+        {
+          "isZoneAvailable": "true",
+          "isFlexi": "false",
+          "isCircle": "true",
+          "isRectangle": "false",
+          "circleType": "240"
+        },
+        {
+          "isZoneAvailable": "false",
+          "isFlexi": "false",
+          "isCircle": "true",
+          "isRectangle": "false",
+          "circleType": ""
+        }
+      ]
+    }
+  },{
+  "name": "NAR-27",
+  "details": {
+    "columns": "3",
+    "rows": "2",
+    "flexiZones": "1",
+    "positionLargeZOne": "center",
+    "rowsColumns": [
+      {
+        "isZoneAvailable": "true",
+        "isFlexi": "true",
+        "isCircle": "false",
+        "isRectangle": "true",
+        "circleType": ""
+      },
+      {
+        "isZoneAvailable": "true",
+        "isFlexi": "false",
+        "isCircle": "true",
+        "isRectangle": "false",
+        "circleType": "240"
+      },
+      {
+        "isZoneAvailable": "true",
+        "isFlexi": "false",
+        "isCircle": "true",
+        "isRectangle": "false",
+        "circleType": "145"
+      },
+      {
+        "isZoneAvailable": "true",
+        "isFlexi": "true",
+        "isCircle": "false",
+        "isRectangle": "true",
+        "circleType": ""
+      },
+      {
+        "isZoneAvailable": "true",
+        "isFlexi": "false",
+        "isCircle": "true",
+        "isRectangle": "false",
+        "circleType": "240"
+      },
+      {
+        "isZoneAvailable": "false",
+        "isFlexi": "false",
+        "isCircle": "true",
+        "isRectangle": "false",
+        "circleType": ""
+      }
+    ]
+  }
+},{
+  "name": "NAR-08",
+  "details": {
+    "columns": "3",
+    "rows": "2",
+    "flexiZones": "1",
+    "positionLargeZOne": "center",
+    "rowsColumns": [
+      {
+        "isZoneAvailable": "true",
+        "isFlexi": "true",
+        "isCircle": "false",
+        "isRectangle": "true",
+        "circleType": ""
+      },
+      {
+        "isZoneAvailable": "true",
+        "isFlexi": "false",
+        "isCircle": "true",
+        "isRectangle": "false",
+        "circleType": "240"
+      },
+      {
+        "isZoneAvailable": "true",
+        "isFlexi": "false",
+        "isCircle": "true",
+        "isRectangle": "false",
+        "circleType": "145"
+      },
+      {
+        "isZoneAvailable": "true",
+        "isFlexi": "true",
+        "isCircle": "false",
+        "isRectangle": "true",
+        "circleType": ""
+      },
+      {
+        "isZoneAvailable": "true",
+        "isFlexi": "false",
+        "isCircle": "true",
+        "isRectangle": "false",
+        "circleType": "240"
+      },
+      {
+        "isZoneAvailable": "true",
+        "isFlexi": "false",
+        "isCircle": "true",
+        "isRectangle": "false",
+        "circleType": "180"
+      }
+    ]
+  }
+}
+]
