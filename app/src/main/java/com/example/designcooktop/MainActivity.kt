@@ -8,6 +8,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.TableLayout
 import android.widget.TableRow
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -32,6 +33,7 @@ class MainActivity : AppCompatActivity() {
     private val viewModel by viewModels<MainViewModel>()
 
     private lateinit var listCookTops: List<CookTopsItem>
+    private lateinit var cookTopLayout: CookTopConstraintLayout
 
     @SuppressLint("CheckResult")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -64,7 +66,10 @@ class MainActivity : AppCompatActivity() {
                 parent: AdapterView<*>?, view: View?, position: Int, id: Long
             ) {
                 binding.swFlexi.isChecked = false
-                createCookTopUI(listCookTops[position])
+                //createCookTopUI(listCookTops[position])
+
+                cookTopLayout = CookTopConstraintLayout(this@MainActivity, listCookTops[position])
+                binding.exampleTableLayoutCard.addView(cookTopLayout)
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -72,8 +77,6 @@ class MainActivity : AppCompatActivity() {
             }
 
         }
-
-        //exampleOfTableLayout()
     }
 
     private fun readJsonFileFromAssets(
@@ -96,20 +99,14 @@ class MainActivity : AppCompatActivity() {
             ConstraintLayout.LayoutParams.WRAP_CONTENT,
         )
 
-        /*constraintLayoutParam.topMargin = 16
-        constraintLayoutParam.bottomMargin = 16
-        constraintLayoutParam.leftMargin = 16
-        constraintLayoutParam.rightMargin = 16*/
-
-        /*val wrapWrapLayoutParam = ConstraintLayout.LayoutParams(
-            ConstraintLayout.LayoutParams.WRAP_CONTENT, ConstraintLayout.LayoutParams.WRAP_CONTENT
-        )*/
-
         mainConstraintLayout.layoutParams = constraintLayoutParam
         mainConstraintLayout.background =
             ResourcesCompat.getDrawable(resources, R.color.black, theme)
 
-        val iv = ShapeableImageView(this)
+        /*val iv = ShapeableImageView(this)
+        iv.setOnClickListener {
+            Toast.makeText(this, "Pressed", Toast.LENGTH_LONG).show()
+        }
         val ivWhirlpoolLogo = ShapeableImageView(this)
         if (input.details.positionLargeZOne == "center") {
             iv.id = View.generateViewId()
@@ -118,6 +115,9 @@ class MainActivity : AppCompatActivity() {
                     resources, R.drawable.circle_240, theme
                 )
             )
+            iv.isClickable = true
+            iv.isFocusable = true
+            iv.isFocusableInTouchMode = true
             mainConstraintLayout.addView(iv)
 
             constraintSet.constrainWidth(iv.id, ConstraintSet.WRAP_CONTENT)
@@ -144,9 +144,9 @@ class MainActivity : AppCompatActivity() {
         val r2c2 = ShapeableImageView(this)
         val r2c3 = ShapeableImageView(this)
         val flexR1C1 = ShapeableImageView(this)
-        val flexR1C3 = ShapeableImageView(this)
+        val flexR1C3 = ShapeableImageView(this)*/
 
-        input.details.rowsColumns.forEachIndexed { index, rowsColumn ->
+        /*input.details.rowsColumns.forEachIndexed { index, rowsColumn ->
             when (index) {
                 0 -> {
                     r1c1.id = View.generateViewId()
@@ -356,10 +356,13 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
             }
-        }
+        }*/
 
         binding.swFlexi.setOnCheckedChangeListener { buttonView, isChecked ->
-            if (isChecked) {
+
+            cookTopLayout.handleFirstFlexiZone(isChecked)
+
+            /*if (isChecked) {
                 val zones = input.details.flexiZones.toInt()
 
                 if (input.details.rowsColumns[0].isFlexi.toBoolean() && input.details.rowsColumns[3].isFlexi.toBoolean()) {
@@ -367,7 +370,7 @@ class MainActivity : AppCompatActivity() {
                     mainConstraintLayout.removeView(r2c1)
 
                     flexR1C1.id = View.generateViewId()
-                    flexR1C1.setPadding(20)
+                    flexR1C1.setPadding(24)
                     flexR1C1.setImageDrawable(
                         ResourcesCompat.getDrawable(
                             resources, getCircleRectFromType(
@@ -417,7 +420,7 @@ class MainActivity : AppCompatActivity() {
                     mainConstraintLayout.removeView(r2c3)
 
                     flexR1C3.id = View.generateViewId()
-                    flexR1C3.setPadding(20)
+                    flexR1C3.setPadding(24)
                     flexR1C3.setImageDrawable(
                         ResourcesCompat.getDrawable(
                             resources, getCircleRectFromType(
@@ -471,32 +474,9 @@ class MainActivity : AppCompatActivity() {
                     mainConstraintLayout.addView(r1c3)
                     mainConstraintLayout.addView(r2c3)
                 }
-            }
-
-            /*constraintSet.clear(ivWhirlpoolLogo.id, ConstraintSet.TOP)
-            if (r2c1.isAttachedToWindow) {
-                constraintSet.connect(
-                    ivWhirlpoolLogo.id, ConstraintSet.TOP, r2c1.id, ConstraintSet.BOTTOM, 32
-                )
-            } else if (flexR1C1.isAttachedToWindow) {
-                constraintSet.connect(
-                    ivWhirlpoolLogo.id, ConstraintSet.TOP, flexR1C1.id, ConstraintSet.BOTTOM, 32
-                )
-            } else if (r2c3.isAttachedToWindow) {
-                constraintSet.connect(
-                    ivWhirlpoolLogo.id, ConstraintSet.TOP, r2c3.id, ConstraintSet.BOTTOM, 32
-                )
-            } else if(flexR1C3.isAttachedToWindow) {
-                constraintSet.connect(
-                    ivWhirlpoolLogo.id, ConstraintSet.TOP, flexR1C3.id, ConstraintSet.BOTTOM, 32
-                )
-            } else{
-                constraintSet.connect(
-                    ivWhirlpoolLogo.id, ConstraintSet.TOP, iv.id, ConstraintSet.BOTTOM, 32
-                )
             }*/
 
-            ivWhirlpoolLogo.updateLayoutParams<ConstraintLayout.LayoutParams> {
+            /*ivWhirlpoolLogo.updateLayoutParams<ConstraintLayout.LayoutParams> {
                 this.startToStart = ConstraintLayout.LayoutParams.PARENT_ID
                 this.endToEnd = ConstraintLayout.LayoutParams.PARENT_ID
                 this.bottomToBottom = ConstraintLayout.LayoutParams.PARENT_ID
@@ -527,11 +507,11 @@ class MainActivity : AppCompatActivity() {
                     )
                     this.topToBottom = iv.id
                 }
-            }
+            }*/
         }
 
         //for whirlpool logo
-        ivWhirlpoolLogo.id = View.generateViewId()
+        /*ivWhirlpoolLogo.id = View.generateViewId()
         ivWhirlpoolLogo.setPadding(24)
         ivWhirlpoolLogo.setImageDrawable(
             ResourcesCompat.getDrawable(
@@ -558,81 +538,13 @@ class MainActivity : AppCompatActivity() {
         )
         constraintSet.connect(
             ivWhirlpoolLogo.id, ConstraintSet.END, ConstraintSet.PARENT_ID, ConstraintSet.END
-        )
+        )*/
 
         constraintSet.applyTo(mainConstraintLayout)
         binding.cvCookTopCard.addView(mainConstraintLayout)
     }
 
-    private fun getCircleRectFromType(
-        isFlexi: Boolean = false, isCircle: Boolean, pos: Int, type: String
-    ): Int {
-        var resourceID = 0
+    private fun createSurfaceView(){
 
-        if (isFlexi && isCircle) {
-            resourceID = R.drawable.flexi_circular
-        } else if (isFlexi && !isCircle) {
-            resourceID = R.drawable.flexi_rectangle
-        } else if (isCircle) {
-            resourceID = when (type) {
-                "145" -> R.drawable.circle_145
-                "180" -> R.drawable.circle_180
-                "210" -> R.drawable.circle_210
-                "240" -> R.drawable.circle_240
-                else -> {
-                    0
-                }
-            }
-        } else {
-            resourceID = when (pos) {
-                0, 2 -> R.drawable.half_rectangle_up
-                3, 5 -> R.drawable.half_rectangle_down
-                else -> {
-                    0
-                }
-            }
-        }
-        return resourceID
-    }
-
-    private fun exampleOfTableLayout() {
-        // Create a TableLayout
-        val tableLayout = TableLayout(this)
-        tableLayout.layoutParams = TableLayout.LayoutParams(
-            TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.WRAP_CONTENT
-        )
-        tableLayout.background = ResourcesCompat.getDrawable(resources, R.color.black, theme)
-
-        // Create 2 rows
-        for (i in 0 until 2) {
-            val tableRow = TableRow(this)
-            tableRow.layoutParams = TableLayout.LayoutParams(
-                TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.MATCH_PARENT
-            )
-
-            // Create 3 columns
-            for (j in 0 until 3) {
-                val textView = ShapeableImageView(this)
-                textView.setPadding(16)
-                textView.layoutParams = TableRow.LayoutParams(
-                    TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT
-                )
-                textView.setImageDrawable(
-                    ResourcesCompat.getDrawable(
-                        resources, R.drawable.circle_145, theme
-                    )
-                )
-
-                tableRow.addView(textView)
-            }
-
-            tableLayout.addView(tableRow)
-        }
-
-        // Remove second column from the second row
-        //(tableLayout.getChildAt(1) as TableRow).removeViewAt(1)
-
-        // Add TableLayout to the main layout
-        binding.exampleTableLayoutCard.addView(tableLayout)
     }
 }
